@@ -1,3 +1,3 @@
 # Notes Keep
 
-Google keep web client for OS X
+Google Keep web client for OS X
