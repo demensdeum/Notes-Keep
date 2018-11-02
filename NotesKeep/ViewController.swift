@@ -18,8 +18,28 @@ class ViewController: NSViewController {
 
         guard let url = URL(string: "https://keep.google.com/") else { return }
         
+        webView?.navigationDelegate = self
         webView?.load(URLRequest(url: url))
     }
 
 }
 
+extension ViewController: WKNavigationDelegate {
+    
+    func handle(error: Error) {
+        NSAlert(error: error).runModal()
+    }
+    
+    func webView(_ webView: WKWebView,
+                 didFail navigation: WKNavigation!,
+                 withError error: Error) {
+        handle(error: error)
+    }
+    
+    func webView(_ webView: WKWebView,
+                 didFailProvisionalNavigation navigation: WKNavigation!,
+                 withError error: Error) {
+        handle(error: error)
+    }
+    
+}
